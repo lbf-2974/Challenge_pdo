@@ -4,8 +4,8 @@ require_once 'connec.php';
 $pdo = new PDO(DSN, USER, PASS);
 
 $query = "SELECT * FROM friend";
-$statment = $pdo->query($query);
-$friends = $statment->fetchAll();
+$statement = $pdo->query($query);
+$friends = $statement->fetchAll();
 
 ?>
 
@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST") {
     }
 
     if(!isset($data['lastname']) || empty($data['lastname'])) {
-        $errors[] = "Le prénom est obligatoire";
+        $errors[] = "Le nom est obligatoire";
     }
 
     if(empty($errors)) {
@@ -75,7 +75,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST") {
 
         <div>
             <label for="lastname"> Nom </label>
-            <input type="text" id="lastname" name="lastname">
+            <input type="text" id="lastname" name="lastname" required>
         </div>
 
         <div class="button">
